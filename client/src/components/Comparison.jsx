@@ -20,6 +20,7 @@ export default function Comparison() {
             Drones aren't always the answer — but in most ag spraying scenarios, they win on flexibility, precision, and access.
           </p>
         </div>
+        <div className="table-scroll">
         <table className="comparison-table">
           <thead>
             <tr>
@@ -40,6 +41,7 @@ export default function Comparison() {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </section>
   )

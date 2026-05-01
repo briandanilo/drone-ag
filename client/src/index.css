@@ -17,12 +17,16 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--text);
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 a { text-decoration: none; color: inherit; }
@@ -808,28 +812,162 @@ img { max-width: 100%; }
 
 .footer-copy { font-size: 13px; }
 
+/* ── Comparison table scroll wrapper ── */
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 16px;
+}
+
+.table-scroll .comparison-table {
+  min-width: 560px;
+}
+
+/* ── Hamburger button ── */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+.nav-burger span {
+  display: block;
+  height: 2px;
+  width: 22px;
+  background: white;
+  border-radius: 2px;
+  transition: transform 0.22s ease, opacity 0.22s ease;
+  transform-origin: center;
+}
+
+.nav-burger span.x:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-burger span.x:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-burger span.x:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Mobile drawer ── */
+.nav-drawer {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--dark);
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0 32px;
+  transform: translateX(100%);
+  transition: transform 0.25s ease;
+  overflow-y: auto;
+}
+
+.nav-drawer.nav-drawer-open { transform: translateX(0); }
+
+.nav-drawer-link {
+  display: block;
+  padding: 16px 0;
+  color: rgba(255,255,255,0.85);
+  font-size: 18px;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.nav-drawer-link:last-of-type { border-bottom: none; }
+.nav-drawer-link:hover { color: white; }
+
+.nav-drawer-cta {
+  display: block;
+  text-align: center;
+  margin-top: 24px;
+  width: 100%;
+  justify-content: center;
+}
+
+.nav-drawer-phone {
+  display: block;
+  text-align: center;
+  margin-top: 16px;
+  color: rgba(255,255,255,0.4);
+  font-size: 14px;
+  font-weight: 600;
+}
+
 /* ── Responsive ── */
+
+/* Large tablet / small laptop */
+@media (max-width: 1100px) {
+  .nav-phone { display: none; }
+}
+
+/* Tablet */
 @media (max-width: 1024px) {
-  .hero-inner { grid-template-columns: 1fr; }
-  .hero-stats { flex-direction: row; flex-wrap: wrap; }
-  .hero-stat-card { flex: 1; min-width: 200px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
   .services-grid { grid-template-columns: 1fr 1fr; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .process-steps { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .process-steps { grid-template-columns: 1fr 1fr; gap: 40px; }
   .process-steps::before { display: none; }
   .testimonials-grid { grid-template-columns: 1fr 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
 }
 
+/* Mobile */
 @media (max-width: 768px) {
-  .hero h1 { font-size: 38px; }
+  .section { padding: 56px 0; }
   .section-title { font-size: 28px; }
+  .section-header { margin-bottom: 36px; }
+
+  /* Nav */
   .nav-links { display: none; }
-  .nav-phone { display: none; }
+  .nav-ctas { display: none; }
+  .nav-burger { display: flex; }
+
+  /* Hero */
+  .hero { padding-top: 70px; min-height: auto; padding-bottom: 48px; }
+  .hero h1 { font-size: 36px; }
+  .hero-sub { font-size: 16px; }
+  .hero-inner { gap: 32px; }
+  .hero-badges { gap: 8px; }
+  .badge { font-size: 12px; padding: 8px 12px; }
+
+  /* Calc card on mobile */
+  .calc-card { padding: 20px; gap: 18px; }
+  .calc-price { font-size: 28px; }
+  .calc-pills { grid-template-columns: 1fr 1fr; }
+
+  /* Sections */
   .services-grid { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
-  .form-row { grid-template-columns: 1fr; }
+  .band-stat-value { font-size: 30px; }
+  .process-steps { grid-template-columns: 1fr 1fr; gap: 28px; }
   .testimonials-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+
+  /* Pricing */
+  .pricing-table-head { padding: 16px 20px; font-size: 12px; }
+  .pricing-row { padding: 14px 20px; }
+
+  /* Footer */
+  .footer-links { display: none; }
+  .footer-inner { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .hero h1 { font-size: 30px; }
+  .hero-actions { flex-direction: column; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+  .process-steps { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .calc-pills { grid-template-columns: 1fr 1fr; }
+  .pricing-note { font-size: 12px; }
 }
 
 /* ── Quote Calculator ── */
