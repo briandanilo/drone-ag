@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="container">
         <div className="footer-inner">
-          <div className="footer-logo">DRONE<span>AG</span></div>
+          <div className="footer-logo">SLO Drone<span> Spray</span></div>
           <ul className="footer-links">
             <li><a href="#services">Services</a></li>
             <li><a href="#how-it-works">How It Works</a></li>
@@ -11,7 +11,7 @@ export default function Footer() {
             <li><a href="#faq">FAQ</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
-          <div className="footer-copy">© {new Date().getFullYear()} DroneAg. All rights reserved.</div>
+          <div className="footer-copy">© {new Date().getFullYear()} SLO Drone Spray. All rights reserved.</div>
         </div>
       </div>
     </footer>

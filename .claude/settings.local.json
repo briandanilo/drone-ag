@@ -9,7 +9,16 @@
       "WebFetch(domain:lokedrone.com)",
       "Bash(git init *)",
       "Bash(git add *)",
-      "Bash(git commit -m 'Initial commit — drone ag spraying website *)"
+      "Bash(git commit -m 'Initial commit — drone ag spraying website *)",
+      "Bash(git branch *)",
+      "Bash(gh auth *)",
+      "Bash(brew install *)",
+      "Bash(/usr/local/bin/gh auth *)",
+      "Bash(gh repo *)",
+      "WebSearch",
+      "Bash(curl *)",
+      "Bash(git commit *)",
+      "Bash(git push *)"
     ]
   }
 }

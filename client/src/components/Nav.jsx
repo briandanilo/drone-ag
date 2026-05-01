@@ -13,7 +13,7 @@ export default function Nav() {
     <nav className={`nav ${solid ? 'nav-solid' : 'nav-transparent'}`}>
       <div className="container">
         <div className="nav-inner">
-          <a href="#home" className="nav-logo">DRONE<span>AG</span></a>
+          <a href="#home" className="nav-logo">SLO Drone<span> Spray</span></a>
           <ul className="nav-links">
             <li><a href="#services">Services</a></li>
             <li><a href="#how-it-works">How It Works</a></li>
