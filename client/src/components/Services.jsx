@@ -1,43 +1,7 @@
-const services = [
-  {
-    num: '01',
-    title: 'Crop Spraying',
-    tagline: 'Precise aerial application over any terrain',
-    bullets: [
-      'Fungicides, herbicides & pesticides',
-      'Consistent coverage at variable rates',
-      'Access to wet or soft fields',
-      'Reduced chemical drift',
-      'GPS-guided flight paths',
-    ],
-  },
-  {
-    num: '02',
-    title: 'Cover Crop Seeding',
-    tagline: 'Direct seeding into standing crops',
-    bullets: [
-      'Seed before harvest to maximize growth window',
-      'No soil disturbance or compaction',
-      'Uniform broadcast distribution',
-      'Works in tight canopy conditions',
-      'Faster than ground equipment',
-    ],
-  },
-  {
-    num: '03',
-    title: 'Frost Seeding',
-    tagline: 'Early spring establishment advantage',
-    bullets: [
-      'Seed clovers & grasses in late winter',
-      'Freeze-thaw cycle works seed into soil',
-      'No equipment in muddy fields',
-      'Earlier establishment than drill seeding',
-      'Cost-effective legume establishment',
-    ],
-  },
-]
+import { useContent } from '../lib/useContent.js'
 
 export default function Services() {
+  const { services } = useContent()
   return (
     <section className="section" id="services">
       <div className="container">

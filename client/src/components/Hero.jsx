@@ -1,25 +1,8 @@
 import { useContent } from '../lib/useContent.js'
 
-const promoItems = [
-  {
-    icon: '◈',
-    title: 'Field Health Map',
-    desc: 'Spots disease, pest pressure & nutrient gaps weeks before they\'re visible on foot',
-  },
-  {
-    icon: '◉',
-    title: 'Terrain & Drainage Map',
-    desc: 'Shows where water pools, runs off, or bypasses crops so you can fix it',
-  },
-  {
-    icon: '◎',
-    title: 'Thermal Irrigation Check',
-    desc: 'Finds dry zones and failing emitters before they cost you yield',
-  },
-]
-
 export default function Hero() {
-  const { hero, contact } = useContent()
+  const { hero, heroPromoItems, contact } = useContent()
+  const promoItems = heroPromoItems
   return (
     <section className="hero" id="home">
       <div className="container">

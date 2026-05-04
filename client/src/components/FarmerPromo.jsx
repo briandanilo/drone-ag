@@ -1,47 +1,9 @@
 import Gallery from './Gallery.jsx'
 import { useContent } from '../lib/useContent.js'
 
-const promoServices = [
-  {
-    icon: '◈',
-    label: 'Crop Health',
-    title: 'Field Health Map',
-    tagline: 'Spot problems before they spread',
-    bullets: [
-      'High-res aerial mosaic of your entire field in one pass',
-      'Reveals disease, pest pressure & nutrient deficiency',
-      'Stress shows up weeks before it\'s visible on foot',
-      'GPS-tagged problem zones you can walk straight to',
-    ],
-  },
-  {
-    icon: '◉',
-    label: 'Irrigation & Planning',
-    title: 'Terrain & Drainage Map',
-    tagline: 'See where water flows — and where it doesn\'t',
-    bullets: [
-      'Precise elevation model of every acre',
-      'Shows where water pools, runs off fast, or bypasses crops',
-      'Guides irrigation zone layout and tile drain decisions',
-      'Useful for planting configuration and harvest planning',
-    ],
-  },
-  {
-    icon: '◎',
-    label: 'Water Stress Detection',
-    title: 'Thermal Irrigation Check',
-    tagline: 'Find your dry spots before yield is lost',
-    bullets: [
-      'Thermal imaging reveals heat-stressed zones across the field',
-      'Finds clogged emitters and failing irrigation sectors',
-      'Plants heat up days before any visible wilting',
-      'Saves you hours of manual field-walking to find problems',
-    ],
-  },
-]
-
 export default function FarmerPromo() {
   const { farmerPromo } = useContent()
+  const promoServices = farmerPromo.services
   return (
     <section className="section promo-section" id="free-survey">
       <div className="container">

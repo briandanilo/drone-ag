@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const defaults = {
+export const defaults = {
   promoBar: {
     text: 'Free drone field analysis for SLO County farms — crop health maps, terrain models & thermal scans.',
     linkText: 'Limited spots available →',
@@ -10,13 +10,56 @@ const defaults = {
     line2: 'Ag Spraying',
     sub: 'Serving San Luis Obispo County vineyards, row crops, and orchards. Same-week scheduling. Zero soil compaction.',
   },
+  heroPromoItems: [
+    { icon: '◈', title: 'Field Health Map', desc: "Spots disease, pest pressure & nutrient gaps weeks before they're visible on foot" },
+    { icon: '◉', title: 'Terrain & Drainage Map', desc: 'Shows where water pools, runs off, or bypasses crops so you can fix it' },
+    { icon: '◎', title: 'Thermal Irrigation Check', desc: 'Finds dry zones and failing emitters before they cost you yield' },
+  ],
+  services: [
+    { num: '01', title: 'Crop Spraying', tagline: 'Precise aerial application over any terrain', bullets: ['Fungicides, herbicides & pesticides', 'Consistent coverage at variable rates', 'Access to wet or soft fields', 'Reduced chemical drift', 'GPS-guided flight paths'] },
+    { num: '02', title: 'Cover Crop Seeding', tagline: 'Direct seeding into standing crops', bullets: ['Seed before harvest to maximize growth window', 'No soil disturbance or compaction', 'Uniform broadcast distribution', 'Works in tight canopy conditions', 'Faster than ground equipment'] },
+    { num: '03', title: 'Frost Seeding', tagline: 'Early spring establishment advantage', bullets: ['Seed clovers & grasses in late winter', 'Freeze-thaw cycle works seed into soil', 'No equipment in muddy fields', 'Earlier establishment than drill seeding', 'Cost-effective legume establishment'] },
+  ],
   farmerPromo: {
-    headline: "A Bird's-Eye View of Your Field — On Us",
+    headline: "Spot Problems Before They Do Damage",
     sub: "We're offering a complimentary drone survey to a limited number of farms in San Luis Obispo County this season. No cost, no obligation — just actionable data to help you get ahead of problems before the season gets away from you.",
     ctaNote: "We'll confirm your spot and schedule a time that works around your operation.",
+    services: [
+      { icon: '◈', label: 'Crop Health', title: 'Field Health Map', tagline: 'Spot problems before they spread', bullets: ['High-res aerial mosaic of your entire field in one pass', 'Reveals disease, pest pressure & nutrient deficiency', "Stress shows up weeks before it's visible on foot", 'GPS-tagged problem zones you can walk straight to'] },
+      { icon: '◉', label: 'Irrigation & Planning', title: 'Terrain & Drainage Map', tagline: "See where water flows — and where it doesn't", bullets: ['Precise elevation model of every acre', 'Shows where water pools, runs off fast, or bypasses crops', 'Guides irrigation zone layout and tile drain decisions', 'Useful for planting configuration and harvest planning'] },
+      { icon: '◎', label: 'Water Stress Detection', title: 'Thermal Irrigation Check', tagline: 'Find your dry spots before yield is lost', bullets: ['Thermal imaging reveals heat-stressed zones across the field', 'Finds clogged emitters and failing irrigation sectors', 'Plants heat up days before any visible wilting', 'Saves you hours of manual field-walking to find problems'] },
+    ],
   },
+  statsBand: [
+    { value: '500+', label: 'Total Acres Treated' },
+    { value: '2', label: 'Aircraft in Fleet' },
+    { value: '40 ac/hr', label: 'Max Coverage Rate' },
+    { value: '0', label: 'Soil Compaction' },
+  ],
+  process: [
+    { title: 'Request a Quote', desc: 'Fill out our quick form with your acreage, crop type, and target application.' },
+    { title: 'Field Assessment', desc: 'We review your field layout, obstacles, and schedule a flight window.' },
+    { title: 'Schedule Service', desc: 'We confirm a date — often same week — and coordinate product delivery.' },
+    { title: 'Application Day', desc: 'We fly, apply, and send you a completion report with flight data.' },
+  ],
+  pricing: {
+    note: '$400 minimum per job · Product not included · Ferry fees may apply beyond 50 miles',
+  },
+  faq: [
+    { q: 'What is the minimum job size?', a: 'We have a $400 minimum per job, which covers up to ~33 acres at our base rate. Smaller fields are welcome — you just pay the minimum.' },
+    { q: 'Can you fly in wet or muddy conditions?', a: "Yes — that's one of the biggest advantages of drone application. As long as it's not actively raining and winds are under 15 mph, we can fly when ground equipment is stuck." },
+    { q: 'Do you supply the chemical/product?', a: 'No, product cost is separate. We work with your agronomist or co-op to coordinate delivery, or you can supply it directly. We handle loading, calibration, and application.' },
+    { q: 'How far in advance do I need to book?', a: 'We typically schedule within the same week, sometimes same day for urgent applications. Book early during peak fungicide season (late June–July) as slots fill fast.' },
+    { q: 'Are you licensed and insured?', a: 'Yes. We hold an FAA Part 107 Remote Pilot Certificate and carry full commercial liability insurance. Applicator certification details available on request.' },
+    { q: 'What drones do you fly?', a: 'Our primary fleet is DJI Agras series — high-volume agricultural drones purpose-built for spray applications with RTK GPS precision.' },
+  ],
+  testimonials: [
+    { text: "Had standing water in half my cornfield and couldn't get the sprayer in. They were out the next day and covered everything. Saved the fungicide timing.", author: 'Mike R.', location: 'Corn & Soybean Farmer' },
+    { text: "Used them for cover crop seeding into soybeans. Germination was excellent and I didn't have to wait until after harvest. Will be doing it every year.", author: 'Tom K.', location: 'Cash Crop Farmer' },
+    { text: 'Straightforward pricing, showed up on time, sent me a flight log after. Exactly what you want from a service provider.', author: 'Janet L.', location: 'Small Acreage Producer' },
+  ],
   promoLanding: {
-    headline: 'See Every Problem on Your Farm Before It Costs You',
+    headline: 'Spot Problems Before They Do Damage',
     sub: 'A complimentary three-part drone survey for select SLO County farms — field health maps, terrain models, and thermal irrigation scans. No cost, no commitment.',
     whyHeadline: 'Why are we doing this for free?',
     whyBody: "We're new to the county and want to show local farmers what precision drone imaging can actually do — not with a brochure, but with real data from your fields. If you find it useful, we hope you'll think of us when it's time for spraying or seeding. If not, no hard feelings.",
@@ -30,17 +73,23 @@ const defaults = {
   },
 }
 
-// Shared fetch — fires once, all callers share the same promise
 let cache = null
 let pending = null
 
 function merge(data) {
   return {
-    promoBar:     { ...defaults.promoBar,     ...(data.promoBar     || {}) },
-    hero:         { ...defaults.hero,         ...(data.hero         || {}) },
-    farmerPromo:  { ...defaults.farmerPromo,  ...(data.farmerPromo  || {}) },
-    promoLanding: { ...defaults.promoLanding, ...(data.promoLanding || {}) },
-    contact:      { ...defaults.contact,      ...(data.contact      || {}) },
+    promoBar:       { ...defaults.promoBar,       ...(data.promoBar       || {}) },
+    hero:           { ...defaults.hero,           ...(data.hero           || {}) },
+    heroPromoItems: data.heroPromoItems           || defaults.heroPromoItems,
+    services:       data.services                 || defaults.services,
+    farmerPromo:    { ...defaults.farmerPromo,    ...(data.farmerPromo    || {}), services: data.farmerPromo?.services || defaults.farmerPromo.services },
+    statsBand:      data.statsBand                || defaults.statsBand,
+    process:        data.process                  || defaults.process,
+    pricing:        { ...defaults.pricing,        ...(data.pricing        || {}) },
+    faq:            data.faq                      || defaults.faq,
+    testimonials:   data.testimonials             || defaults.testimonials,
+    promoLanding:   { ...defaults.promoLanding,   ...(data.promoLanding   || {}) },
+    contact:        { ...defaults.contact,        ...(data.contact        || {}) },
   }
 }
 
@@ -49,7 +98,7 @@ function fetchContent() {
   const controller = new AbortController()
   const timeout = setTimeout(() => controller.abort(), 3000)
   pending = fetch('/api/content', { signal: controller.signal })
-    .then(r => r.json())
+    .then(r => { if (!r.ok) throw new Error(r.status); return r.json() })
     .then(data => { clearTimeout(timeout); cache = merge(data); return cache })
     .catch(() => { clearTimeout(timeout); pending = null; return null })
   return pending

@@ -1,11 +1,7 @@
-const steps = [
-  { num: 1, title: 'Request a Quote', desc: 'Fill out our quick form with your acreage, crop type, and target application.' },
-  { num: 2, title: 'Field Assessment', desc: 'We review your field layout, obstacles, and schedule a flight window.' },
-  { num: 3, title: 'Schedule Service', desc: 'We confirm a date — often same week — and coordinate product delivery.' },
-  { num: 4, title: 'Application Day', desc: 'We fly, apply, and send you a completion report with flight data.' },
-]
+import { useContent } from '../lib/useContent.js'
 
 export default function Process() {
+  const { process } = useContent()
   return (
     <section className="section section-alt" id="how-it-works">
       <div className="container">
@@ -14,9 +10,9 @@ export default function Process() {
           <h2 className="section-title">From Quote to Done in Days</h2>
         </div>
         <div className="process-steps">
-          {steps.map(s => (
-            <div className="process-step" key={s.num}>
-              <div className="step-num">{s.num}</div>
+          {process.map((s, i) => (
+            <div className="process-step" key={i}>
+              <div className="step-num">{i + 1}</div>
               <h3>{s.title}</h3>
               <p>{s.desc}</p>
             </div>

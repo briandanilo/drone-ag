@@ -1,22 +1,7 @@
-const testimonials = [
-  {
-    text: "Had standing water in half my cornfield and couldn\'t get the sprayer in. They were out the next day and covered everything. Saved the fungicide timing.",
-    author: 'Mike R.',
-    location: 'Corn & Soybean Farmer',
-  },
-  {
-    text: "Used them for cover crop seeding into soybeans. Germination was excellent and I didn\'t have to wait until after harvest. Will be doing it every year.",
-    author: 'Tom K.',
-    location: 'Cash Crop Farmer',
-  },
-  {
-    text: "Straightforward pricing, showed up on time, sent me a flight log after. Exactly what you want from a service provider.",
-    author: 'Janet L.',
-    location: 'Small Acreage Producer',
-  },
-]
+import { useContent } from '../lib/useContent.js'
 
 export default function Testimonials() {
+  const { testimonials } = useContent()
   return (
     <section className="section section-dark">
       <div className="container">

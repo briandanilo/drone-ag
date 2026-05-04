@@ -1,4 +1,5 @@
 import QuoteCalculator from './QuoteCalculator.jsx'
+import { useContent } from '../lib/useContent.js'
 
 const tiers = [
   { range: '1 – 100 acres', rate: '$12 / acre', min: '$400 minimum' },
@@ -8,6 +9,7 @@ const tiers = [
 ]
 
 export default function Pricing() {
+  const { pricing } = useContent()
   return (
     <section className="section section-alt" id="pricing">
       <div className="container">
@@ -32,7 +34,7 @@ export default function Pricing() {
             </div>
           ))}
         </div>
-        <p className="pricing-note">$400 minimum per job &nbsp;·&nbsp; Product not included &nbsp;·&nbsp; Ferry fees may apply beyond 50 miles</p>
+        <p className="pricing-note">{pricing.note}</p>
         <div className="pricing-calc-wrap">
           <QuoteCalculator />
         </div>
