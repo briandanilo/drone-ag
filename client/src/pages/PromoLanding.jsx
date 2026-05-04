@@ -130,9 +130,6 @@ export default function PromoLanding() {
         </div>
       </section>
 
-      {/* Full gallery below */}
-      <Gallery />
-
       {/* What's included */}
       <section className="promo-lp-services">
         <div className="promo-lp-container">
@@ -151,6 +148,9 @@ export default function PromoLanding() {
           </div>
         </div>
       </section>
+
+      {/* Full gallery */}
+      <Gallery />
 
       {/* Why us */}
       <section className="promo-lp-why">
