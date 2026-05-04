@@ -37,7 +37,7 @@ export default function Hero() {
           <div className="hero-promo-card">
             <div>
               <span className="hero-promo-free-badge">Free This Season</span>
-              <p className="hero-promo-card-title">What's included in your survey</p>
+              <p className="hero-promo-card-title">Free Survey Includes</p>
             </div>
             <div className="hero-promo-items">
               {promoItems.map(item => (
