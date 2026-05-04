@@ -1,3 +1,4 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import PromoBar from './components/PromoBar.jsx'
 import Nav from './components/Nav.jsx'
 import Hero from './components/Hero.jsx'
@@ -12,8 +13,9 @@ import FAQ from './components/FAQ.jsx'
 import Testimonials from './components/Testimonials.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
+import PromoLanding from './pages/PromoLanding.jsx'
 
-export default function App() {
+function MainSite() {
   return (
     <>
       <PromoBar />
@@ -31,5 +33,16 @@ export default function App() {
       <Contact />
       <Footer />
     </>
+  )
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainSite />} />
+        <Route path="/free-survey" element={<PromoLanding />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
