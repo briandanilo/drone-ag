@@ -32,7 +32,7 @@ export default function Contact() {
         <div className="contact-grid">
           <div className="contact-info">
             <div className="section-label">Get in Touch</div>
-            <h2 className="section-title">Request a Quote</h2>
+            <h2 className="section-title">Claim Your Free Survey or Request a Quote</h2>
             <p>Fill out the form and we'll follow up within 24 hours — usually same day.</p>
             <div className="contact-detail">
               <div className="contact-icon">📞</div>
@@ -81,6 +81,7 @@ export default function Contact() {
                 <label>Service Type</label>
                 <select value={form.cropType} onChange={set('cropType')} required>
                   <option value="">Select…</option>
+                  <option>Free Field Analysis (Promo)</option>
                   <option>Crop Spraying</option>
                   <option>Cover Crop Seeding</option>
                   <option>Frost Seeding</option>

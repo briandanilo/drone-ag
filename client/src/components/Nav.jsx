@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 
 const links = [
+  { href: '#free-survey', label: 'Free Survey', promo: true },
   { href: '#services', label: 'Services' },
-  { href: '#how-it-works', label: 'How It Works' },
+  { href: '#gallery', label: 'Gallery' },
   { href: '#pricing', label: 'Pricing' },
   { href: '#faq', label: 'FAQ' },
   { href: '#contact', label: 'Contact' },
@@ -36,7 +37,11 @@ export default function Nav() {
             </a>
 
             <ul className="nav-links">
-              {links.map(l => <li key={l.href}><a href={l.href}>{l.label}</a></li>)}
+              {links.map(l => (
+                <li key={l.href}>
+                  <a href={l.href} className={l.promo ? 'nav-link-promo' : ''}>{l.label}</a>
+                </li>
+              ))}
             </ul>
 
             <div className="nav-ctas">
@@ -60,7 +65,12 @@ export default function Nav() {
       <div className={`nav-drawer ${open ? 'nav-drawer-open' : ''}`}>
         <div className="container">
           {links.map(l => (
-            <a key={l.href} href={l.href} className="nav-drawer-link" onClick={close}>
+            <a
+              key={l.href}
+              href={l.href}
+              className={`nav-drawer-link${l.promo ? ' nav-drawer-link-promo' : ''}`}
+              onClick={close}
+            >
               {l.label}
             </a>
           ))}

@@ -1,3 +1,5 @@
+import QuoteCalculator from './QuoteCalculator.jsx'
+
 const tiers = [
   { range: '1 – 100 acres', rate: '$12 / acre', min: '$400 minimum' },
   { range: '101 – 199 acres', rate: '$10 / acre', min: '' },
@@ -31,6 +33,9 @@ export default function Pricing() {
           ))}
         </div>
         <p className="pricing-note">$400 minimum per job &nbsp;·&nbsp; Product not included &nbsp;·&nbsp; Ferry fees may apply beyond 50 miles</p>
+        <div className="pricing-calc-wrap">
+          <QuoteCalculator />
+        </div>
       </div>
     </section>
   )
