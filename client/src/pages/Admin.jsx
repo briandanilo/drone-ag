@@ -34,7 +34,10 @@ export default function Admin() {
 
   useEffect(() => {
     if (!authed) return
-    fetch('/api/content').then(r => r.json()).then(setContent)
+    fetch('/api/content')
+      .then(r => { if (!r.ok) throw new Error(r.status); return r.json() })
+      .then(setContent)
+      .catch(() => setContent(null))
   }, [authed])
 
   const set = (section, key) => val =>
@@ -89,6 +92,7 @@ export default function Admin() {
     )
   }
 
+  if (content === null) return <div className="admin-loading" style={{ color: '#dc2626' }}>Could not reach server. Make sure the local server is running on port 3001.</div>
   if (!content) return <div className="admin-loading">Loading…</div>
 
   return (
