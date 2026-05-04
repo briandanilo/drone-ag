@@ -38,21 +38,21 @@ export default function Contact() {
               <div className="contact-icon">📞</div>
               <div>
                 <div className="contact-detail-label">Phone</div>
-                <div className="contact-detail-value">(000) 000-0000</div>
+                <div className="contact-detail-value">(512) 202-8302</div>
               </div>
             </div>
             <div className="contact-detail">
               <div className="contact-icon">✉</div>
               <div>
                 <div className="contact-detail-label">Email</div>
-                <div className="contact-detail-value">info@yourbusiness.com</div>
+                <div className="contact-detail-value">brian@slodronespray.com</div>
               </div>
             </div>
             <div className="contact-detail">
               <div className="contact-icon">📍</div>
               <div>
                 <div className="contact-detail-label">Service Area</div>
-                <div className="contact-detail-value">Your Region — 250 mile radius</div>
+                <div className="contact-detail-value">San Luis Obispo County</div>
               </div>
             </div>
           </div>

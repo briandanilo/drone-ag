@@ -45,7 +45,7 @@ export default function Nav() {
             </ul>
 
             <div className="nav-ctas">
-              <a href="tel:0000000000" className="nav-phone">(000) 000-0000</a>
+              <a href="tel:0000000000" className="nav-phone">(512) 202-8302</a>
               <a href="#contact" className="btn btn-primary">Get a Quote</a>
             </div>
 
@@ -77,7 +77,7 @@ export default function Nav() {
           <a href="#contact" className="btn btn-primary nav-drawer-cta" onClick={close}>
             Get a Quote
           </a>
-          <a href="tel:0000000000" className="nav-drawer-phone">(000) 000-0000</a>
+          <a href="tel:0000000000" className="nav-drawer-phone">(512) 202-8302</a>
         </div>
       </div>
     </>
