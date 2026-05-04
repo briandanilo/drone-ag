@@ -32,12 +32,6 @@ export default function Hero() {
               <a href="#contact" className="btn btn-primary">Get a Quote</a>
               <a href="#services" className="btn btn-outline">Our Services</a>
             </div>
-            <div className="hero-badges">
-              <div className="badge"><div className="badge-icon">✓</div>FAA Part 107</div>
-              <div className="badge"><div className="badge-icon">✓</div>Fully Insured</div>
-              <div className="badge"><div className="badge-icon">✓</div>CA Applicator Cert</div>
-              <div className="badge"><div className="badge-icon">✓</div>Same-Week Service</div>
-            </div>
           </div>
 
           <div className="hero-promo-card">
