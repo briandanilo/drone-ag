@@ -4,6 +4,7 @@ import cors from 'cors'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import quoteRoutes from './routes/quotes.js'
+import contentRoutes from './routes/content.js'
 
 const app = express()
 const PORT = process.env.PORT || 3001
@@ -14,6 +15,7 @@ app.use(express.json())
 
 app.get('/health', (_req, res) => res.json({ ok: true }))
 app.use('/api/quotes', quoteRoutes)
+app.use('/api/content', contentRoutes)
 
 if (process.env.NODE_ENV === 'production') {
   const clientDist = path.join(__dirname, '../../client/dist')

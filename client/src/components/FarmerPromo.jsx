@@ -1,4 +1,5 @@
 import Gallery from './Gallery.jsx'
+import { useContent } from '../lib/useContent.js'
 
 const promoServices = [
   {
@@ -40,21 +41,14 @@ const promoServices = [
 ]
 
 export default function FarmerPromo() {
+  const { farmerPromo } = useContent()
   return (
     <section className="section promo-section" id="free-survey">
       <div className="container">
         <div className="promo-header">
           <div className="promo-badge">Free for Local Farms · Limited Availability</div>
-          <h2 className="section-title promo-title">
-            A Bird's-Eye View of Your Field —<br />
-            <span className="promo-title-accent">On Us</span>
-          </h2>
-          <p className="promo-sub">
-            We're offering a complimentary drone survey to a limited number of farms in
-            San Luis Obispo County this season. No cost, no obligation — just
-            actionable data to help you get ahead of problems before the season gets
-            away from you.
-          </p>
+          <h2 className="section-title promo-title">{farmerPromo.headline}</h2>
+          <p className="promo-sub">{farmerPromo.sub}</p>
         </div>
 
         <div className="promo-grid">
@@ -81,9 +75,7 @@ export default function FarmerPromo() {
           <a href="#contact" className="btn btn-primary promo-cta-btn">
             Claim Your Free Survey
           </a>
-          <p className="promo-cta-note">
-            We'll confirm your spot and schedule a time that works around your operation.
-          </p>
+          <p className="promo-cta-note">{farmerPromo.ctaNote}</p>
         </div>
       </div>
     </section>

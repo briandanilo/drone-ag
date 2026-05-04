@@ -1,6 +1,8 @@
 import { useState } from 'react'
+import { useContent } from '../lib/useContent.js'
 
 export default function Contact() {
+  const { contact } = useContent()
   const [form, setForm] = useState({ name: '', email: '', phone: '', acreage: '', cropType: '', message: '' })
   const [status, setStatus] = useState(null)
 
@@ -38,21 +40,21 @@ export default function Contact() {
               <div className="contact-icon">📞</div>
               <div>
                 <div className="contact-detail-label">Phone</div>
-                <div className="contact-detail-value">(512) 202-8302</div>
+                <div className="contact-detail-value">{contact.phone}</div>
               </div>
             </div>
             <div className="contact-detail">
               <div className="contact-icon">✉</div>
               <div>
                 <div className="contact-detail-label">Email</div>
-                <div className="contact-detail-value">brian@slodronespray.com</div>
+                <div className="contact-detail-value">{contact.email}</div>
               </div>
             </div>
             <div className="contact-detail">
               <div className="contact-icon">📍</div>
               <div>
                 <div className="contact-detail-label">Service Area</div>
-                <div className="contact-detail-value">San Luis Obispo County</div>
+                <div className="contact-detail-value">{contact.serviceArea}</div>
               </div>
             </div>
           </div>

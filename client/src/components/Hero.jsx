@@ -1,3 +1,5 @@
+import { useContent } from '../lib/useContent.js'
+
 const promoItems = [
   {
     icon: '◈',
@@ -17,17 +19,15 @@ const promoItems = [
 ]
 
 export default function Hero() {
+  const { hero, contact } = useContent()
   return (
     <section className="hero" id="home">
       <div className="container">
         <div className="hero-inner">
           <div>
             <div className="hero-label">✈ FAA Licensed &amp; Fully Insured</div>
-            <h1>Precision Drone<br /><span>Ag Spraying</span></h1>
-            <p className="hero-sub">
-              Serving San Luis Obispo County vineyards, row crops, and orchards.
-              Same-week scheduling. Zero soil compaction.
-            </p>
+            <h1>{hero.line1}<br /><span>{hero.line2}</span></h1>
+            <p className="hero-sub">{hero.sub}</p>
             <div className="hero-actions">
               <a href="#contact" className="btn btn-primary">Get a Quote</a>
               <a href="#services" className="btn btn-outline">Our Services</a>

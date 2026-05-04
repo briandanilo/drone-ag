@@ -14,6 +14,7 @@ import Testimonials from './components/Testimonials.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 import PromoLanding from './pages/PromoLanding.jsx'
+import Admin from './pages/Admin.jsx'
 
 function MainSite() {
   return (
@@ -41,6 +42,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<MainSite />} />
         <Route path="/free-survey" element={<PromoLanding />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </BrowserRouter>
   )
