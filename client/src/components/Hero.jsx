@@ -26,7 +26,7 @@ export default function Hero() {
         <div className="hero-inner">
           <div>
             <div className="hero-label">✈ FAA Licensed &amp; Fully Insured</div>
-            <h1>{hero.line1}<br /><span>{hero.line2}</span></h1>
+            <h1>{hero.line1 || 'Precision Drone'}<br /><span>{hero.line2 || 'Ag Spraying'}</span></h1>
             <p className="hero-sub">{hero.sub}</p>
             <div className="hero-actions">
               <a href="#contact" className="btn btn-primary">Get a Quote</a>

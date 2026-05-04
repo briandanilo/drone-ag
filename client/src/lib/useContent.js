@@ -30,27 +30,37 @@ const defaults = {
   },
 }
 
+// Shared fetch — fires once, all callers share the same promise
 let cache = null
+let pending = null
+
+function merge(data) {
+  return {
+    promoBar:     { ...defaults.promoBar,     ...(data.promoBar     || {}) },
+    hero:         { ...defaults.hero,         ...(data.hero         || {}) },
+    farmerPromo:  { ...defaults.farmerPromo,  ...(data.farmerPromo  || {}) },
+    promoLanding: { ...defaults.promoLanding, ...(data.promoLanding || {}) },
+    contact:      { ...defaults.contact,      ...(data.contact      || {}) },
+  }
+}
+
+function fetchContent() {
+  if (pending) return pending
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(), 3000)
+  pending = fetch('/api/content', { signal: controller.signal })
+    .then(r => r.json())
+    .then(data => { clearTimeout(timeout); cache = merge(data); return cache })
+    .catch(() => { clearTimeout(timeout); pending = null; return null })
+  return pending
+}
 
 export function useContent() {
   const [content, setContent] = useState(cache || defaults)
 
   useEffect(() => {
-    if (cache) return
-    fetch('/api/content')
-      .then(r => r.json())
-      .then(data => {
-        const merged = {
-          promoBar: { ...defaults.promoBar, ...data.promoBar },
-          hero: { ...defaults.hero, ...data.hero },
-          farmerPromo: { ...defaults.farmerPromo, ...data.farmerPromo },
-          promoLanding: { ...defaults.promoLanding, ...data.promoLanding },
-          contact: { ...defaults.contact, ...data.contact },
-        }
-        cache = merged
-        setContent(merged)
-      })
-      .catch(() => {})
+    if (cache) { setContent(cache); return }
+    fetchContent().then(merged => { if (merged) setContent(merged) })
   }, [])
 
   return content
@@ -58,4 +68,5 @@ export function useContent() {
 
 export function invalidateContent() {
   cache = null
+  pending = null
 }
