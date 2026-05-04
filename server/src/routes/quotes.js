@@ -9,8 +9,8 @@ router.post('/', async (req, res) => {
 
   try {
     await resend.emails.send({
-      from: 'SLO Drone Spray <onboarding@resend.dev>',
-      to: 'brian.danilo@gmail.com',
+      from: 'SLO Drone Spray <brian@slodronespray.com>',
+      to: 'brian@slodronespray.com',
       reply_to: email,
       subject: `New inquiry: ${cropType} — ${name}`,
       html: `
