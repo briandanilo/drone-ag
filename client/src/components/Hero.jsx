@@ -22,19 +22,15 @@ export default function Hero() {
       <div className="container">
         <div className="hero-inner">
           <div>
-            <div className="hero-label hero-promo-label">
-              <span className="hero-label-dot" />
-              Free for SLO County Farms &nbsp;·&nbsp; Limited Availability
-            </div>
-            <h1>Free Aerial Field<br />Analysis for <span>Local Farms</span></h1>
+            <div className="hero-label">✈ FAA Licensed &amp; Fully Insured</div>
+            <h1>Precision Drone<br /><span>Ag Spraying</span></h1>
             <p className="hero-sub">
-              We're SLO Drone Spray — FAA licensed, fully insured, and based right here in the county.
-              This season, we're surveying select local farms at no charge: three deliverables that
-              help you catch problems early and farm smarter.
+              Serving San Luis Obispo County vineyards, row crops, and orchards.
+              Same-week scheduling. Zero soil compaction.
             </p>
             <div className="hero-actions">
-              <a href="#contact" className="btn btn-primary">Claim Your Free Survey</a>
-              <a href="#services" className="btn btn-outline">View Paid Services</a>
+              <a href="#contact" className="btn btn-primary">Get a Quote</a>
+              <a href="#services" className="btn btn-outline">Our Services</a>
             </div>
             <div className="hero-badges">
               <div className="badge"><div className="badge-icon">✓</div>FAA Part 107</div>
