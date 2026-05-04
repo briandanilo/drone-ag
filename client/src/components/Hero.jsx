@@ -1,7 +1,7 @@
 import { useContent } from '../lib/useContent.js'
 
 export default function Hero() {
-  const { hero, heroPromoItems, contact } = useContent()
+  const { hero, heroPromoCard, heroPromoItems, contact } = useContent()
   const promoItems = heroPromoItems
   return (
     <section className="hero" id="home">
@@ -19,8 +19,8 @@ export default function Hero() {
 
           <div className="hero-promo-card">
             <div>
-              <span className="hero-promo-free-badge">Free This Season</span>
-              <p className="hero-promo-card-title">Free Survey Includes</p>
+              <span className="hero-promo-free-badge">{heroPromoCard.badge}</span>
+              <p className="hero-promo-card-title">{heroPromoCard.title}</p>
             </div>
             <div className="hero-promo-items">
               {promoItems.map(item => (
@@ -34,10 +34,8 @@ export default function Hero() {
               ))}
             </div>
             <div>
-              <a href="#contact" className="btn hero-promo-card-cta">
-                Claim Your Free Survey →
-              </a>
-              <p className="hero-promo-card-note">Available to SLO County farms · While spots last</p>
+              <a href="#contact" className="btn hero-promo-card-cta">{heroPromoCard.cta}</a>
+              <p className="hero-promo-card-note">{heroPromoCard.note}</p>
             </div>
           </div>
         </div>

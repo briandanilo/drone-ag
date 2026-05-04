@@ -10,6 +10,12 @@ export const defaults = {
     line2: 'Ag Spraying',
     sub: 'Serving San Luis Obispo County vineyards, row crops, and orchards. Same-week scheduling. Zero soil compaction.',
   },
+  heroPromoCard: {
+    badge: 'Free This Season',
+    title: 'Free Survey Includes',
+    cta: 'Claim Your Free Survey →',
+    note: 'Available to SLO County farms · While spots last',
+  },
   heroPromoItems: [
     { icon: '◈', title: 'Field Health Map', desc: "Spots disease, pest pressure & nutrient gaps weeks before they're visible on foot" },
     { icon: '◉', title: 'Terrain & Drainage Map', desc: 'Shows where water pools, runs off, or bypasses crops so you can fix it' },
@@ -80,6 +86,7 @@ function merge(data) {
   return {
     promoBar:       { ...defaults.promoBar,       ...(data.promoBar       || {}) },
     hero:           { ...defaults.hero,           ...(data.hero           || {}) },
+    heroPromoCard:  { ...defaults.heroPromoCard,  ...(data.heroPromoCard  || {}) },
     heroPromoItems: data.heroPromoItems           || defaults.heroPromoItems,
     services:       data.services                 || defaults.services,
     farmerPromo:    { ...defaults.farmerPromo,    ...(data.farmerPromo    || {}), services: data.farmerPromo?.services || defaults.farmerPromo.services },

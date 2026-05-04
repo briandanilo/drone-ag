@@ -80,7 +80,7 @@ export default function Admin() {
     if (!authed) return
     fetch('/api/content')
       .then(r => { if (!r.ok) throw new Error(r.status); return r.json() })
-      .then(data => setContent({ ...defaults, ...data, faq: data.faq || defaults.faq, testimonials: data.testimonials || defaults.testimonials, services: data.services || defaults.services, statsBand: data.statsBand || defaults.statsBand, process: data.process || defaults.process, heroPromoItems: data.heroPromoItems || defaults.heroPromoItems, farmerPromo: { ...defaults.farmerPromo, ...data.farmerPromo, services: data.farmerPromo?.services || defaults.farmerPromo.services } }))
+      .then(data => setContent({ ...defaults, ...data, heroPromoCard: { ...defaults.heroPromoCard, ...(data.heroPromoCard || {}) }, faq: data.faq || defaults.faq, testimonials: data.testimonials || defaults.testimonials, services: data.services || defaults.services, statsBand: data.statsBand || defaults.statsBand, process: data.process || defaults.process, heroPromoItems: data.heroPromoItems || defaults.heroPromoItems, farmerPromo: { ...defaults.farmerPromo, ...data.farmerPromo, services: data.farmerPromo?.services || defaults.farmerPromo.services } }))
       .catch(() => setContent(null))
   }, [authed])
 
@@ -171,6 +171,11 @@ export default function Admin() {
         </Section>
 
         <Section title="Hero — Free Survey Card">
+          <Field label="Badge text" value={content.heroPromoCard.badge} onChange={set('heroPromoCard', 'badge')} />
+          <Field label="Card title" value={content.heroPromoCard.title} onChange={set('heroPromoCard', 'title')} />
+          <Field label="CTA button text" value={content.heroPromoCard.cta} onChange={set('heroPromoCard', 'cta')} />
+          <Field label="Note below button" value={content.heroPromoCard.note} onChange={set('heroPromoCard', 'note')} />
+          <div className="admin-subheading">Service Items</div>
           <CardList
             items={content.heroPromoItems}
             onChange={setArr('heroPromoItems')}
