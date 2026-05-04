@@ -2034,7 +2034,7 @@ img { max-width: 100%; }
 
 .gallery-embedded {
   margin-top: 48px;
-  margin-bottom: 8px;
+  margin-bottom: 48px;
 }
 
 @media (max-width: 1024px) {
