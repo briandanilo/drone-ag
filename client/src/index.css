@@ -1864,6 +1864,11 @@ img { max-width: 100%; }
 
 .gallery-lb-nav:hover { background: rgba(255,255,255,0.2); }
 
+.gallery-embedded {
+  margin-top: 48px;
+  margin-bottom: 8px;
+}
+
 @media (max-width: 1024px) {
   .gallery-grid { grid-template-columns: 1fr 1fr; }
 }

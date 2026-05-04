@@ -1,3 +1,5 @@
+import Gallery from './Gallery.jsx'
+
 const promoServices = [
   {
     icon: '◈',
@@ -72,6 +74,8 @@ export default function FarmerPromo() {
             </div>
           ))}
         </div>
+
+        <Gallery embedded />
 
         <div className="promo-cta-row">
           <a href="#contact" className="btn btn-primary promo-cta-btn">

@@ -40,7 +40,7 @@ const images = [
 
 const filters = ['All', 'Visible', 'Thermal']
 
-export default function Gallery() {
+export default function Gallery({ embedded = false }) {
   const [activeFilter, setActiveFilter] = useState('All')
   const [lightbox, setLightbox] = useState(null)
 
@@ -71,17 +71,8 @@ export default function Gallery() {
     return () => { document.body.style.overflow = '' }
   }, [lightbox])
 
-  return (
-    <section className="section section-alt" id="gallery">
-      <div className="container">
-        <div className="section-header">
-          <div className="section-label">Sample Imagery</div>
-          <h2 className="section-title">See What the Drone Sees</h2>
-          <p className="section-sub">
-            Real orthomosaics and thermal surveys — the same deliverables included in your free field analysis.
-          </p>
-        </div>
-
+  const inner = (
+    <>
         <div className="gallery-filters">
           {filters.map(f => (
             <button
@@ -112,7 +103,6 @@ export default function Gallery() {
             </button>
           ))}
         </div>
-      </div>
 
       {lightbox && (
         <div className="gallery-lightbox" onClick={closeLightbox}>
@@ -138,6 +128,23 @@ export default function Gallery() {
           >›</button>
         </div>
       )}
+    </>
+  )
+
+  if (embedded) return <div className="gallery-embedded">{inner}</div>
+
+  return (
+    <section className="section section-alt" id="gallery">
+      <div className="container">
+        <div className="section-header">
+          <div className="section-label">Sample Imagery</div>
+          <h2 className="section-title">See What the Drone Sees</h2>
+          <p className="section-sub">
+            Real orthomosaics and thermal surveys — the same deliverables included in your free field analysis.
+          </p>
+        </div>
+        {inner}
+      </div>
     </section>
   )
 }

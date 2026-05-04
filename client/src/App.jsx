@@ -23,7 +23,6 @@ function MainSite() {
       <Hero />
       <Services />
       <FarmerPromo />
-      <Gallery />
       <StatsBand />
       <Process />
       <Comparison />
