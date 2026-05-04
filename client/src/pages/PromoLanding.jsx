@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Gallery from '../components/Gallery.jsx'
 
 const services = [
   {
@@ -17,8 +18,6 @@ const services = [
     desc: 'Thermal imaging reveals heat-stressed zones and finds clogged emitters or failing irrigation sectors — often days before any visible wilting.',
   },
 ]
-
-const badges = ['FAA Part 107 Licensed', 'Fully Insured', 'CA Pesticide Applicator', 'Based in SLO County']
 
 function PromoForm() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', acreage: '', cropType: 'Free Field Analysis (Promo)', message: '' })
@@ -79,31 +78,34 @@ function PromoForm() {
         <label>Crop / Operation Type</label>
         <input placeholder="e.g. Vineyard, row crops, orchard…" value={form.message} onChange={set('message')} />
       </div>
-
       {status === 'error' && (
-        <div className="promo-lp-error">Something went wrong — call us at (512) 202-8302 or email brian@slodronespray.com.</div>
+        <div className="promo-lp-error">Something went wrong — call us at (512) 202-8302.</div>
       )}
-
       <button type="submit" className="btn promo-lp-submit" disabled={status === 'sending'}>
         {status === 'sending' ? 'Sending…' : 'Claim My Free Survey →'}
       </button>
-      <p className="promo-lp-form-note">No cost, no commitment. We'll confirm your spot within 24 hours.</p>
+      <p className="promo-lp-form-note">No cost, no commitment. We'll confirm within 24 hours.</p>
     </form>
   )
 }
 
+const heroImages = [
+  { src: '/gallery/NakhonPhanomMar17_vis.jpg', alt: 'Aerial field orthomosaic' },
+  { src: '/gallery/OsoFlacoLake_vis.jpg',      alt: 'Visible light orthomosaic' },
+  { src: '/gallery/OceanoDunes_tir.jpg',        alt: 'Thermal infrared scan' },
+]
+
 export default function PromoLanding() {
   return (
     <div className="promo-lp">
-      {/* Header */}
       <header className="promo-lp-header">
         <a href="/" className="promo-lp-logo">SLO Drone<span> Spray</span></a>
         <a href="tel:5122028302" className="promo-lp-phone">(512) 202-8302</a>
       </header>
 
-      {/* Hero */}
-      <section className="promo-lp-hero">
-        <div className="promo-lp-hero-inner">
+      {/* Split hero: text left, image grid right */}
+      <section className="promo-lp-hero promo-lp-hero-split">
+        <div className="promo-lp-hero-split-inner">
           <div className="promo-lp-hero-content">
             <div className="promo-lp-eyebrow">
               <span className="promo-lp-dot" />
@@ -111,26 +113,25 @@ export default function PromoLanding() {
             </div>
             <h1>See Every Problem on Your Farm Before It Costs You</h1>
             <p className="promo-lp-hero-sub">
-              We're SLO Drone Spray — FAA licensed, fully insured, and based right here in the county. This season we're offering a complimentary three-part drone survey to select local farms. No strings attached.
+              A complimentary three-part drone survey for select SLO County farms — field health maps, terrain models, and thermal irrigation scans. No cost, no commitment.
             </p>
-            <div className="promo-lp-badges">
-              {badges.map(b => (
-                <span key={b} className="promo-lp-badge">✓ {b}</span>
-              ))}
-            </div>
+            <a href="#claim" className="btn promo-lp-submit" style={{ display: 'inline-flex', width: 'auto', marginTop: 8 }}>
+              Claim Your Free Survey →
+            </a>
           </div>
 
-          {/* Form */}
-          <div className="promo-lp-form-card">
-            <div className="promo-lp-form-header">
-              <span className="promo-lp-free-tag">Free This Season</span>
-              <h2>Claim Your Free Survey</h2>
-              <p>Fill in your details and we'll schedule around your operation.</p>
+          <div className="promo-lp-hero-imgs">
+            <img src={heroImages[0].src} alt={heroImages[0].alt} className="promo-lp-hero-img-wide" />
+            <div className="promo-lp-hero-imgs-row">
+              <img src={heroImages[1].src} alt={heroImages[1].alt} />
+              <img src={heroImages[2].src} alt={heroImages[2].alt} />
             </div>
-            <PromoForm />
           </div>
         </div>
       </section>
+
+      {/* Full gallery below */}
+      <Gallery />
 
       {/* What's included */}
       <section className="promo-lp-services">
@@ -167,18 +168,20 @@ export default function PromoLanding() {
         </div>
       </section>
 
-      {/* Bottom CTA */}
-      <section className="promo-lp-bottom-cta">
-        <div className="promo-lp-container" style={{ textAlign: 'center' }}>
-          <h2>Ready to see your field from above?</h2>
-          <p>Scroll up to claim your spot, or call us directly.</p>
-          <a href="tel:5122028302" className="btn promo-lp-submit" style={{ marginTop: 24, display: 'inline-flex' }}>
-            Call (512) 202-8302
-          </a>
+      {/* Form */}
+      <section className="promo-lp-form-section" id="claim">
+        <div className="promo-lp-container">
+          <div className="promo-lp-form-card promo-lp-form-card-centered">
+            <div className="promo-lp-form-header">
+              <span className="promo-lp-free-tag">Free This Season</span>
+              <h2>Claim Your Free Survey</h2>
+              <p>Fill in your details and we'll schedule around your operation.</p>
+            </div>
+            <PromoForm />
+          </div>
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="promo-lp-footer">
         <span>© 2026 SLO Drone Spray · San Luis Obispo County</span>
         <a href="/">Back to main site</a>

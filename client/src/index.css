@@ -1234,6 +1234,68 @@ img { max-width: 100%; }
   overflow: hidden;
 }
 
+/* Split hero — text left, images right */
+.promo-lp-hero-split {
+  padding: 64px 32px;
+}
+
+.promo-lp-hero-split-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.promo-lp-hero-imgs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.promo-lp-hero-img-wide {
+  width: 100%;
+  aspect-ratio: 16/7;
+  object-fit: cover;
+  display: block;
+}
+
+.promo-lp-hero-imgs-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.promo-lp-hero-imgs-row img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .promo-lp-hero-split-inner {
+    grid-template-columns: 1fr;
+  }
+  .promo-lp-hero-imgs { display: none; }
+}
+
+/* Form as own section */
+.promo-lp-form-section {
+  padding: 80px 32px;
+  background: var(--light-2);
+}
+
+.promo-lp-form-card-centered {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
 .promo-lp-hero::before {
   content: '';
   position: absolute;

@@ -19,7 +19,31 @@
       "Bash(curl *)",
       "Bash(git commit *)",
       "Bash(git push *)",
-      "Bash(git remote *)"
+      "Bash(git remote *)",
+      "Bash(npm run *)",
+      "Bash(lsof -ti:3001)",
+      "Bash(/Users/briandanilo/.nvm/versions/node/v20.20.2/bin/node /Users/briandanilo/.nvm/versions/node/v20.20.2/bin/npx vite)",
+      "Bash(/Users/briandanilo/.nvm/versions/node/v20.20.2/bin/node --version)",
+      "Bash(/Users/briandanilo/.nvm/versions/node/v20.20.2/bin/node -e \"console.log\\(typeof crypto\\)\")",
+      "Bash(/Users/briandanilo/.nvm/versions/node/v20.20.2/bin/node /Users/briandanilo/drone/node_modules/.bin/vite --host)",
+      "Bash(open *)",
+      "WebFetch(domain:www.dslrpros.com)",
+      "WebFetch(domain:deveron.com)",
+      "WebFetch(domain:crops.extension.iastate.edu)",
+      "WebFetch(domain:advexure.com)",
+      "Bash(/Users/briandanilo/.nvm/versions/node/v20.20.2/bin/npm install *)",
+      "Bash(/Users/briandanilo/.nvm/versions/node/v20.20.2/bin/node /Users/briandanilo/.nvm/versions/node/v20.20.2/bin/npx nodemon src/index.js)",
+      "Bash(xargs kill *)",
+      "Bash(pkill -f \"nodemon src/index.js\")",
+      "Bash(/Users/briandanilo/.nvm/versions/node/v20.20.2/bin/node src/index.js)",
+      "Bash(file \"/Users/briandanilo/Downloads/drive-download-20260504T174326Z-3-001/\"*.tif)",
+      "Bash(dig MX slodronespray.com +short)",
+      "Bash(dig NS slodronespray.com +short)",
+      "Bash(dig slodronespray.com +short)",
+      "Bash(dig TXT _railway-verify.slodronespray.com +short)",
+      "Bash(dig CNAME slodronespray.com +short)",
+      "Bash(lsof -ti:5173)",
+      "Bash(/Users/briandanilo/.nvm/versions/node/v20.20.2/bin/node /Users/briandanilo/drone/node_modules/.bin/vite)"
     ]
   }
 }
