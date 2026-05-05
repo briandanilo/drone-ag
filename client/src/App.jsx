@@ -5,7 +5,6 @@ import Hero from './components/Hero.jsx'
 import Services from './components/Services.jsx'
 import FarmerPromo from './components/FarmerPromo.jsx'
 import Gallery from './components/Gallery.jsx'
-import StatsBand from './components/StatsBand.jsx'
 import Process from './components/Process.jsx'
 import Comparison from './components/Comparison.jsx'
 import Pricing from './components/Pricing.jsx'
@@ -22,12 +21,11 @@ function MainSite() {
       <PromoBar />
       <Nav />
       <Hero />
+      <Pricing />
       <Services />
       <FarmerPromo />
-      <StatsBand />
       <Process />
       <Comparison />
-      <Pricing />
       <FAQ />
       <Testimonials />
       <Contact />

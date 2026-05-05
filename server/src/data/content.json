@@ -20,24 +20,15 @@
     { "icon": "◎", "title": "Thermal Irrigation Check", "desc": "Finds dry zones and failing emitters before they cost you yield" }
   ],
   "services": [
-    {
-      "num": "01",
-      "title": "Crop Spraying",
-      "tagline": "Precise aerial application over any terrain",
-      "bullets": ["Fungicides, herbicides & pesticides", "Consistent coverage at variable rates", "Access to wet or soft fields", "Reduced chemical drift", "GPS-guided flight paths"]
-    },
-    {
-      "num": "02",
-      "title": "Cover Crop Seeding",
-      "tagline": "Direct seeding into standing crops",
-      "bullets": ["Seed before harvest to maximize growth window", "No soil disturbance or compaction", "Uniform broadcast distribution", "Works in tight canopy conditions", "Faster than ground equipment"]
-    },
-    {
-      "num": "03",
-      "title": "Frost Seeding",
-      "tagline": "Early spring establishment advantage",
-      "bullets": ["Seed clovers & grasses in late winter", "Freeze-thaw cycle works seed into soil", "No equipment in muddy fields", "Earlier establishment than drill seeding", "Cost-effective legume establishment"]
-    }
+    { "num": "01", "icon": "🍇", "title": "Vineyard Fungicide Spraying", "tagline": "Sulfur & fungicide runs across Paso Robles and Edna Valley wine country", "bullets": ["Powdery mildew & botrytis control", "Fly hillside and terraced blocks ground rigs can't reach", "Zero trellis or canopy damage", "GPS-guided passes, same-week scheduling"] },
+    { "num": "02", "icon": "🍓", "title": "Strawberry & Berry Treatment", "tagline": "Protect coastal Arroyo Grande and Nipomo fields from fungal pressure", "bullets": ["Botrytis and powdery mildew control", "No compaction in soft, wet coastal soils", "Fly in humid conditions when pressure is highest", "Precise application on high-value berry crops"] },
+    { "num": "03", "icon": "🥑", "title": "Avocado & Citrus Orchards", "tagline": "Reach steep coastal hillside groves where ground rigs can't go", "bullets": ["Fungicide and pest control on any slope or grade", "No ruts or soil compaction in orchard rows", "Access tight canopy on established trees", "Covers coastal SLO groves efficiently"] },
+    { "num": "04", "icon": "🥦", "title": "Vegetable Row Crops", "tagline": "Broccoli, cauliflower & leafy greens on the Nipomo Mesa and coastal valleys", "bullets": ["Fast turnaround on high-value perishable crops", "Fly when fields are too wet for ground equipment", "Consistent coverage across large flat blocks", "Precise timing for pest and disease windows"] },
+    { "num": "05", "icon": "🌾", "title": "Rangeland Weed Control", "tagline": "Herbicide runs across cattle ranches and inland grazing land", "bullets": ["Cover vast acreage with no road access required", "Target invasive species and thistle patches", "Works on rolling terrain and canyon edges", "Cost-effective alternative to helicopter application"] },
+    { "num": "06", "icon": "🌱", "title": "Vineyard Cover Crop Seeding", "tagline": "Broadcast seed between rows before canopy closes in spring", "bullets": ["Zero vine or trellis contact during seeding", "Works while vines are dormant or just budding", "Uniform distribution row to row", "Compatible with any row spacing or vine configuration"] },
+    { "num": "07", "icon": "🌳", "title": "Orchard & Tree Crop Spraying", "tagline": "Any orchard where slope, canopy, or spacing makes a ground rig impractical", "bullets": ["Walnuts, stone fruit, citrus & mixed orchards", "Under-canopy coverage on established trees", "No orchard floor damage or compaction", "Flexible scheduling around harvest windows"] },
+    { "num": "08", "icon": "💧", "title": "Fertilizer & Nutrient Application", "tagline": "Liquid fertilizer and micronutrient top-dressing delivered from the air", "bullets": ["Foliar nutrient application on any crop type", "Variable-rate delivery across field zones", "No soil compaction during application", "Can be combined with pest or disease spray runs"] },
+    { "num": "09", "icon": "🚁", "title": "Custom & Specialty Applications", "tagline": "One-off and non-standard jobs — if it can be applied from the air, we can do it", "bullets": ["Dust suppressant on unpaved roads and pads", "Mosquito and vector abatement near wetlands", "Biological controls and beneficial insect release", "Contact us to discuss your specific application"] }
   ],
   "farmerPromo": {
     "headline": "Spot Problems Before They Do Damage",

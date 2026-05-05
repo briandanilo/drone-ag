@@ -9,19 +9,20 @@ export default function Services() {
           <div className="section-label">What We Do</div>
           <h2 className="section-title">Drone Services Built for Ag</h2>
           <p className="section-sub">
-            From fungicide runs to cover crop seeding, we keep your operation moving
-            when ground equipment can't.
+            Vineyards, berries, avocados, row crops, rangeland — if it grows in SLO County, we can spray it.
           </p>
         </div>
         <div className="services-grid">
           {services.map(s => (
             <div className="service-card" key={s.num}>
-              <div className="service-num">{s.num}</div>
-              <h3>{s.title}</h3>
-              <p className="service-tagline">{s.tagline}</p>
-              <ul className="service-bullets">
-                {s.bullets.map(b => <li key={b}>{b}</li>)}
-              </ul>
+              <div className="service-card-body">
+                {s.icon && <div className="service-icon">{s.icon}</div>}
+                <h3>{s.title}</h3>
+                <p className="service-tagline">{s.tagline}</p>
+                <ul className="service-bullets">
+                  {s.bullets.map(b => <li key={b}>{b}</li>)}
+                </ul>
+              </div>
             </div>
           ))}
         </div>

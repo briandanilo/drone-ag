@@ -1,21 +1,23 @@
 import { useState } from 'react'
-import Gallery from '../components/Gallery.jsx'
 
-const services = [
+const deliverables = [
   {
     icon: '◈',
     title: 'Field Health Map',
     desc: 'High-res aerial mosaic of your entire field. Spots disease, pest pressure, and nutrient gaps weeks before they\'re visible on foot — with GPS-tagged problem zones you can walk straight to.',
+    img: { src: '/gallery/crop-health.jpg', alt: 'NIR crop health map' },
   },
   {
     icon: '◉',
     title: 'Terrain & Drainage Map',
     desc: 'Precise elevation model showing where water pools, runs off too fast, or bypasses crops entirely. Guides irrigation layout, tile drain placement, and planting configuration.',
+    img: { src: '/gallery/irrigation-planning.jpg', alt: 'RGB vs NDVI irrigation planning' },
   },
   {
     icon: '◎',
     title: 'Thermal Irrigation Check',
     desc: 'Thermal imaging reveals heat-stressed zones and finds clogged emitters or failing irrigation sectors — often days before any visible wilting.',
+    img: { src: '/gallery/water-stress.png', alt: 'Thermal water stress detection' },
   },
 ]
 
@@ -89,13 +91,10 @@ function PromoForm() {
   )
 }
 
-const heroImages = [
-  { src: '/gallery/NakhonPhanomMar17_vis.jpg', alt: 'Aerial field orthomosaic' },
-  { src: '/gallery/OsoFlacoLake_vis.jpg',      alt: 'Visible light orthomosaic' },
-  { src: '/gallery/OceanoDunes_tir.jpg',        alt: 'Thermal infrared scan' },
-]
-
 export default function PromoLanding() {
+  const [active, setActive] = useState(0)
+  const current = deliverables[active]
+
   return (
     <div className="promo-lp">
       <header className="promo-lp-header">
@@ -103,54 +102,51 @@ export default function PromoLanding() {
         <a href="tel:5122028302" className="promo-lp-phone">(512) 202-8302</a>
       </header>
 
-      {/* Split hero: text left, image grid right */}
-      <section className="promo-lp-hero promo-lp-hero-split">
-        <div className="promo-lp-hero-split-inner">
-          <div className="promo-lp-hero-content">
-            <div className="promo-lp-eyebrow">
-              <span className="promo-lp-dot" />
-              Free for SLO County Farms · Limited Availability
-            </div>
-            <h1>See Every Problem on Your Farm Before It Costs You</h1>
-            <p className="promo-lp-hero-sub">
-              A complimentary three-part drone survey for select SLO County farms — field health maps, terrain models, and thermal irrigation scans. No cost, no commitment.
-            </p>
-            <a href="#claim" className="btn promo-lp-submit" style={{ display: 'inline-flex', width: 'auto', marginTop: 8 }}>
-              Claim Your Free Survey →
-            </a>
+      <section className="promo-lp-hero">
+        <div className="promo-lp-hero-content">
+          <div className="promo-lp-eyebrow">
+            <span className="promo-lp-dot" />
+            Free for SLO County Farms · Limited Availability
           </div>
-
-          <div className="promo-lp-hero-imgs">
-            <img src={heroImages[0].src} alt={heroImages[0].alt} className="promo-lp-hero-img-wide" />
-            <div className="promo-lp-hero-imgs-row">
-              <img src={heroImages[1].src} alt={heroImages[1].alt} />
-              <img src={heroImages[2].src} alt={heroImages[2].alt} />
-            </div>
-          </div>
+          <h1>See Every Problem on Your Farm Before It Costs You</h1>
+          <p className="promo-lp-hero-sub">
+            A complimentary three-part drone survey for select SLO County farms — field health maps, terrain models, and thermal irrigation scans. No cost, no commitment.
+          </p>
+          <a href="#claim" className="btn promo-lp-submit" style={{ display: 'inline-flex', width: 'auto', marginTop: 8 }}>
+            Claim Your Free Survey →
+          </a>
         </div>
       </section>
 
-      {/* What's included */}
+      {/* Interactive deliverables */}
       <section className="promo-lp-services">
         <div className="promo-lp-container">
           <div className="promo-lp-section-header">
             <h2>Three Deliverables. Zero Cost.</h2>
-            <p>Every survey includes all three — a complete picture of your field's health, terrain, and irrigation.</p>
+            <p>Every survey includes all three — click each to see what your data actually looks like.</p>
           </div>
-          <div className="promo-lp-services-grid">
-            {services.map(s => (
-              <div key={s.title} className="promo-lp-service-card">
-                <span className="promo-lp-service-icon">{s.icon}</span>
-                <h3>{s.title}</h3>
-                <p>{s.desc}</p>
-              </div>
-            ))}
+          <div className="promo-lp-deliverables">
+            <div className="promo-lp-deliverable-cards">
+              {deliverables.map((s, i) => (
+                <button
+                  key={s.title}
+                  className={`promo-lp-deliverable-card${i === active ? ' active' : ''}`}
+                  onClick={() => setActive(i)}
+                >
+                  <span className="promo-lp-service-icon">{s.icon}</span>
+                  <div>
+                    <h3>{s.title}</h3>
+                    <p>{s.desc}</p>
+                  </div>
+                </button>
+              ))}
+            </div>
+            <div className="promo-lp-deliverable-img-wrap">
+              <img key={current.img.src} src={current.img.src} alt={current.img.alt} className="promo-lp-deliverable-img" />
+            </div>
           </div>
         </div>
       </section>
-
-      {/* Full gallery */}
-      <Gallery />
 
       {/* Why us */}
       <section className="promo-lp-why">
@@ -158,7 +154,6 @@ export default function PromoLanding() {
           <div>
             <h2>Why are we doing this for free?</h2>
             <p>We're new to the county and want to show local farmers what precision drone imaging can actually do — not with a brochure, but with real data from your fields. If you find it useful, we hope you'll think of us when it's time for spraying or seeding. If not, no hard feelings.</p>
-            <p style={{ marginTop: 16 }}>We're limiting this to a small number of farms so we can do each one properly. Once spots are gone, they're gone.</p>
           </div>
           <div className="promo-lp-stats">
             <div className="promo-lp-stat"><span>300+</span>acres mapped per hour</div>

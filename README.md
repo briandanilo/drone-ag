@@ -4,27 +4,61 @@ Drone ag services website for San Luis Obispo County. React + Express monorepo d
 
 ---
 
-## Current Status
+## Current Status (as of May 5, 2026)
 
 | Thing | Status |
 |-------|--------|
-| Site (Railway) | ✅ Live at `drone-ag-server-production.up.railway.app` |
-| Domain | ⏳ DNS propagating — `slodronespray.com` should resolve within ~30 min of last session |
-| Email receiving | ✅ `brian@slodronespray.com` forwards to `brian.danilo@gmail.com` via Cloudflare Email Routing |
-| Email sending | ⏳ Gmail Send As pending — verification email hasn't landed yet (MX records just propagated) |
-| Resend domain | ✅ `slodronespray.com` verified in Resend |
+| Site (Railway) | ✅ Live at `slodronespray.com` |
+| Email receiving | ⚠️ Cloudflare Email Routing disabled — MX records deleted to make room for Workspace |
+| Google Workspace | 🔄 In progress — account created, DNS verification pending, wizard 502ing |
+| Email sending | ⏳ Blocked on Workspace setup |
+| Apollo.io campaign | ⏳ Ready to set up once Workspace email is working |
+
+---
+
+## Where We Left Off
+
+### Email / Workspace fight
+Trying to get a real `brian@slodronespray.com` inbox via Google Workspace so Apollo.io can send the ag outreach campaign from it. Chain of events:
+
+1. Cloudflare Email Routing was forwarding `brian@slodronespray.com` → `brian.danilo@gmail.com`
+2. Workspace couldn't verify the domain because Cloudflare's MX records were locked
+3. Deleted the Cloudflare MX records to free up the domain
+4. Workspace verification started working but the setup wizard is 502ing
+5. Considering Microsoft 365 as alternative (~$6/mo) — search "Microsoft 365 Business Basic"
+
+**To resume:** Either fix Workspace (try admin.google.com) or sign up for Microsoft 365. Once you have a real inbox at `brian@slodronespray.com`, connect it to Apollo and ping me — I'll load the campaign.
+
+### Apollo.io campaign
+Ready to go once email is sorted. Plan:
+- Use Apollo to find SLO County contacts (vineyards, farms, orchards, ag consultants, crop advisers)
+- Draft segmented email copy per audience type
+- Load as draft via Apollo API for Brian to review and send
+
+---
+
+## Site Changes Made This Session
+
+- **Services section** — replaced 3 generic services with 9 SLO County-specific ones (vineyards, strawberries, avocados, veg row crops, rangeland, cover crop seeding + 3 catch-alls). Emoji icons per card.
+- **Pricing** — merged table + calculator into one card. Two tiers only: $14/acre under 100 acres, $10/acre at 100+. No service type multipliers.
+- **Pricing moved** — now sits immediately below hero, above services.
+- **Stats band removed** (500+ acres, 2 aircraft, etc.)
+- **FarmerPromo images fixed** — all 3 tabs now use real drone data imagery:
+  - Crop Health → NIR false-color field scan (user-supplied)
+  - Irrigation & Planning → RGB vs NDVI side-by-side (user-supplied)
+  - Water Stress Detection → thermal stress scan (user-supplied)
+- **Free Survey page (/free-survey)** — removed Gallery component, made deliverables section interactive (click each deliverable → image appears beside it)
+- **Services section subtitle** updated to reflect SLO County focus
 
 ---
 
 ## Pending To-Dos
 
-- [ ] Confirm `slodronespray.com` loads in browser
-- [ ] Complete Gmail Send As verification for `brian@slodronespray.com`
-  - Gmail → Settings → Accounts and Import → Send mail as → Send verification
-  - SMTP: `smtp.resend.com`, Port: `587`, Username: `resend`, Password: Resend API key
-- [ ] Add `www` CNAME record in Cloudflare DNS (same target as `@`)
-- [ ] Add custom domain in Railway (Settings → Networking → Custom Domain → `slodronespray.com`)
-- [ ] Update placeholder phone/email in `Nav.jsx` (currently updated to real values)
+- [ ] Fix Google Workspace or set up Microsoft 365 for `brian@slodronespray.com`
+- [ ] Re-add Cloudflare email forwarding OR switch to Workspace/M365 MX records
+- [ ] Connect email to Apollo.io
+- [ ] Run Apollo contact search for SLO County ag contacts
+- [ ] Load and review outreach email campaign in Apollo
 
 ---
 
@@ -42,7 +76,7 @@ drone/
 - **Backend:** Express, Resend (email), no database
 - **Deploy:** Railway (single service — server builds and serves client)
 - **DNS/CDN:** Cloudflare
-- **Email:** Resend (sending) + Cloudflare Email Routing (receiving)
+- **Email:** Resend (transactional/form submissions) — inbox TBD (Workspace or M365)
 
 ---
 
@@ -100,11 +134,6 @@ Set in Railway → Variables tab:
 - `NODE_ENV` — `production`
 - `PORT` — `3001`
 
-### Server `.env` (local only, not committed)
-```
-RESEND_API_KEY=your_key_here
-```
-
 ---
 
 ## Services & Accounts
@@ -112,9 +141,11 @@ RESEND_API_KEY=your_key_here
 | Service | Purpose | Login |
 |---------|---------|-------|
 | Railway | Hosting | github.com/briandanilo |
-| Cloudflare | DNS + Email Routing | brian.danilo@gmail.com |
-| Resend | Transactional email | brian.danilo@gmail.com |
+| Cloudflare | DNS | brian.danilo@gmail.com |
+| Resend | Transactional email (form submissions) | brian.danilo@gmail.com |
 | GitHub | Source control | github.com/briandanilo — repo: `drone-ag` |
+| Apollo.io | Email outreach campaign | TBD |
+| Google Workspace | Business inbox (in progress) | brian@slodronespray.com |
 
 ---
 
@@ -123,42 +154,27 @@ RESEND_API_KEY=your_key_here
 | File | What it does |
 |------|-------------|
 | `client/src/App.jsx` | Page layout / component order |
-| `client/src/components/Hero.jsx` | Hero section (promo takeover) |
-| `client/src/components/FarmerPromo.jsx` | Free survey promo section |
-| `client/src/components/Gallery.jsx` | Image gallery with lightbox |
+| `client/src/components/Hero.jsx` | Hero section |
+| `client/src/components/FarmerPromo.jsx` | Free survey promo tabs with drone imagery |
+| `client/src/components/Services.jsx` | 9-service grid (SLO County focused) |
+| `client/src/components/Pricing.jsx` | Pricing section wrapper |
+| `client/src/components/QuoteCalculator.jsx` | Interactive cost estimator |
 | `client/src/components/Contact.jsx` | Contact form → Resend email |
-| `client/src/components/PromoBar.jsx` | Top announcement bar |
-| `client/src/components/Nav.jsx` | Navigation |
+| `client/src/lib/useContent.js` | Content defaults + API merge logic |
+| `client/src/pages/PromoLanding.jsx` | /free-survey landing page |
 | `client/src/index.css` | All styles |
-| `server/src/index.js` | Express app entry |
+| `server/src/data/content.json` | Live content (overrides defaults — edit this, not useContent.js) |
 | `server/src/routes/quotes.js` | Form submission → Resend email |
-| `client/public/gallery/` | Gallery images (converted from GeoTIFF) |
-| `railway.toml` | Railway build/start/healthcheck config |
+| `client/public/gallery/` | Drone imagery (crop-health.jpg, irrigation-planning.jpg, water-stress.png) |
 
 ---
 
-## Email Setup
-
-### Receiving (`brian@slodronespray.com` → Gmail)
-Cloudflare Email Routing: `slodronespray.com` → Email → Email Routing  
-Route: `brian@slodronespray.com` → `brian.danilo@gmail.com`
-
-### Sending (reply as `brian@slodronespray.com` from Gmail)
-Gmail → Settings → Accounts and Import → Send mail as  
-SMTP server: `smtp.resend.com` | Port: `587` | Username: `resend` | Password: Resend API key  
-Status: pending verification email
-
-### Form submissions
-When a farmer submits the contact form, Resend emails `brian@slodronespray.com` with lead details.  
-The email has a "Reply to [Name] →" button — just hit reply to respond from your Gmail.
-
----
-
-## Cloudflare DNS Records
+## Cloudflare DNS Records (current — MX deleted for Workspace)
 
 | Type | Name | Target | Proxy |
 |------|------|--------|-------|
 | CNAME | `@` | `drone-ag-server-production.up.railway.app` | ON |
 | CNAME | `www` | `drone-ag-server-production.up.railway.app` | ON |
-| MX | (auto) | Cloudflare Email Routing records | — |
-| TXT/CNAME | (auto) | Resend DKIM/SPF records | — |
+| TXT | `@` | Google site verification token | — |
+
+**Note:** MX records were deleted. Once Workspace or M365 is set up, add their MX records here. Email forwarding is currently broken until then.
